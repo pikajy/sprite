@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>FindParent</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <a id="p1">
+    <div id="p2">
+      <a id="p3">
+        <span id="pp"></span>
+      </a>
+    </div>
+  </a>
+  <script>
+    function findParent(parentType, child) {
+      var parent = child.parentNode 
+      //判断tagName
+      while (parent && parent.tagName.toLowerCase() != parentType.toLowerCase()) {
+        if (parent.tagName.toLowerCase() == 'body') {
+          parent = null
+        } else {
+          parent = parent.parentNode
+        }
+      }
+      return parent
+    }
+    var parentType = 'DIV'
+    var p = document.getElementById('pp')
+    console.log(findParent(parentType, p))
+  </script>
+</body>
+
+</html>
